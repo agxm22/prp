@@ -1,0 +1,1259 @@
+/* ========================================
+   CSS Variables & Root Styles
+   ======================================== */
+:root {
+    --gold: #d4af37;
+    --gold-light: #f4e4a6;
+    --gold-dark: #b8941e;
+    --diamond: #e8f4ff;
+    --diamond-shine: #ffffff;
+    --purple: #8b5cf6;
+    --purple-light: #c4b5fd;
+    --cream: #fffbf5;
+    --text-dark: #2d2020;
+    --shadow: rgba(139, 92, 246, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(135deg, #fffbf5 0%, #f5f0ff 100%);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ========================================
+   Falling Particles Background Animation
+   ======================================== */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.falling-particle {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.6;
+    animation: fall linear infinite;
+    top: -50px;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   Page Wrapper
+   ======================================== */
+.page-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 60px 20px;
+}
+
+.glow-decoration {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--purple), transparent);
+    border-radius: 50%;
+    opacity: 0.15;
+    filter: blur(60px);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.glow-top-left {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.glow-top-right {
+    top: 15%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.15; }
+    50% { transform: scale(1.3); opacity: 0.25; }
+}
+
+.hero-content {
+    animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.1);
+}
+
+.subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-dark);
+    margin-bottom: 60px;
+    font-style: italic;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.date {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-top: 60px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+/* ========================================
+   Animated Ring
+   ======================================== */
+.animated-ring-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.ring-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent);
+    border-radius: 50%;
+    animation: glowPulse 2s ease-in-out infinite;
+    filter: blur(20px);
+}
+
+@keyframes glowPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+}
+
+.ring-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: floatRing 4s ease-in-out infinite;
+}
+
+@keyframes floatRing {
+    0%, 100% { transform: translateY(0px) rotateY(0deg); }
+    25% { transform: translateY(-10px) rotateY(10deg); }
+    50% { transform: translateY(0px) rotateY(0deg); }
+    75% { transform: translateY(-10px) rotateY(-10deg); }
+}
+
+.ring-band {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    animation: appear 2s ease-out forwards;
+    transform-origin: center center;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3) rotateY(180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    }
+}
+
+.ring-top {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 15px;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    border-radius: 50px 50px 0 0;
+    box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.5),
+        0 4px 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Diamond Gem on Ring */
+.ring-gem {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    animation: gemShine 3s ease-in-out infinite;
+}
+
+@keyframes gemShine {
+    0%, 100% { 
+        filter: brightness(1) drop-shadow(0 0 10px rgba(232, 244, 255, 0.5));
+    }
+    50% { 
+        filter: brightness(1.3) drop-shadow(0 0 20px rgba(232, 244, 255, 0.8));
+    }
+}
+
+.gem-facet {
+    position: absolute;
+    width: 25px;
+    height: 35px;
+    background: linear-gradient(135deg, var(--diamond) 0%, var(--diamond-shine) 50%, var(--diamond) 100%);
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 100%;
+    box-shadow: 
+        inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+        inset -2px -2px 4px rgba(139, 92, 246, 0.2);
+}
+
+.facet-1 {
+    transform: translate(-50%, -50%) rotate(0deg);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.facet-2 {
+    transform: translate(-50%, -50%) rotate(90deg);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.facet-3 {
+    transform: translate(-50%, -50%) rotate(180deg);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.facet-4 {
+    transform: translate(-50%, -50%) rotate(270deg);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.gem-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle, var(--diamond-shine), var(--purple-light));
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(232, 244, 255, 0.8);
+    animation: centerSparkle 2s ease-in-out infinite;
+}
+
+@keyframes centerSparkle {
+    0%, 100% { box-shadow: 0 0 15px rgba(232, 244, 255, 0.8); }
+    50% { box-shadow: 0 0 25px rgba(232, 244, 255, 1), 0 0 35px rgba(139, 92, 246, 0.5); }
+}
+
+/* Ring Band Details */
+.ring-detail {
+    position: absolute;
+    top: 50%;
+    width: 8px;
+    height: 80px;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+    border-radius: 4px;
+    transform: translateY(-50%);
+    box-shadow: inset 1px 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.ring-detail-left {
+    left: 10px;
+    transform: translateY(-50%) rotate(-10deg);
+}
+
+.ring-detail-right {
+    right: 10px;
+    transform: translateY(-50%) rotate(10deg);
+}
+
+.ring-shadow {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 20px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.2), transparent);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+/* Sparkles Around Ring */
+.sparkles-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 20px;
+    color: var(--gold);
+    opacity: 0;
+    animation: sparkleAnimation 3s ease-in-out infinite;
+}
+
+.sparkle-1 {
+    top: 10%;
+    left: 50%;
+    animation-delay: 0s;
+}
+
+.sparkle-2 {
+    top: 30%;
+    right: 10%;
+    animation-delay: 0.5s;
+}
+
+.sparkle-3 {
+    bottom: 30%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.sparkle-4 {
+    bottom: 10%;
+    left: 50%;
+    animation-delay: 1.5s;
+}
+
+.sparkle-5 {
+    bottom: 30%;
+    left: 10%;
+    animation-delay: 2s;
+}
+
+.sparkle-6 {
+    top: 30%;
+    left: 15%;
+    animation-delay: 2.5s;
+}
+
+@keyframes sparkleAnimation {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) rotate(180deg);
+    }
+}
+
+/* ========================================
+   Message Section
+   ======================================== */
+.message-section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.message-box {
+    background: white;
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px var(--shadow);
+    border: 2px solid var(--gold-light);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
+}
+
+.message-box::before {
+    content: '💍';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3rem;
+    opacity: 0.1;
+}
+
+.message-box::after {
+    content: '💍';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 3rem;
+    opacity: 0.1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.love-message {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--text-dark);
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+.highlight-text {
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--purple);
+    font-weight: 500;
+}
+
+.signature {
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 40px;
+    font-style: italic;
+}
+
+/* ========================================
+   Photo Gallery Section - Mobile First
+   ======================================== */
+.gallery-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.photo-featured {
+    width: 100%;
+    animation: fadeInScale 0.8s ease-out both;
+}
+
+.photo-featured .photo-frame {
+    aspect-ratio: 4/5;
+    max-height: 500px;
+    margin: 0 auto;
+}
+
+.photo-side-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.photo-side {
+    animation: fadeInScale 0.8s ease-out both;
+}
+
+.photo-side:nth-child(1) { animation-delay: 0.2s; }
+.photo-side:nth-child(2) { animation-delay: 0.3s; }
+
+.photo-side .photo-frame {
+    aspect-ratio: 1/1;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.photo-card {
+    width: 100%;
+}
+
+.photo-frame {
+    position: relative;
+    background: white;
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.photo-frame:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+}
+
+.photo-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(139, 92, 246, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 10px;
+}
+
+.photo-frame:hover::after {
+    opacity: 1;
+}
+
+.gallery-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: none;
+}
+
+.photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--cream) 0%, #f5f0ff 100%);
+    border: 2px dashed var(--gold-light);
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.photo-featured .photo-placeholder span {
+    display: block;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.photo-side .photo-placeholder span {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.photo-placeholder small {
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    display: block;
+    opacity: 0.7;
+}
+
+.photo-caption {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.photo-featured .photo-caption {
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 15px;
+}
+
+/* ========================================
+   Reasons Section
+   ======================================== */
+.reasons-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.reason-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 20px var(--shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.reason-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+}
+
+.reason-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.reason-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+}
+
+.reason-card p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   Interactive Section
+   ======================================== */
+.interactive-section {
+    padding: 80px 20px 40px;
+    text-align: center;
+}
+
+.love-button {
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    color: white;
+    border: none;
+    padding: 20px 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.love-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.love-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+}
+
+.love-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.special-message {
+    max-width: 600px;
+    margin: 40px auto 0;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px var(--shadow);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+    pointer-events: none;
+    border: 2px solid var(--gold-light);
+}
+
+.special-message.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.special-message p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+/* ========================================
+   Yes/No Decision Section
+   ======================================== */
+.decision-section {
+    padding: 80px 20px;
+    text-align: center;
+    min-height: 500px;
+    position: relative;
+}
+
+.decision-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.decision-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 60px;
+    font-style: italic;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 40px;
+    min-height: 250px;
+    position: relative;
+    padding: 20px;
+}
+
+.yes-button,
+.no-button {
+    padding: 0;
+    width: 150px;
+    height: 150px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.2),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    flex-shrink: 0;
+}
+
+.yes-button {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    animation: pulseGreen 2s ease-in-out infinite;
+}
+
+@keyframes pulseGreen {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 
+            0 10px 20px rgba(34, 197, 94, 0.4),
+            inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 
+            0 15px 30px rgba(34, 197, 94, 0.6),
+            inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.yes-button:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 
+        0 15px 35px rgba(34, 197, 94, 0.6),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.yes-button:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 
+        0 5px 10px rgba(34, 197, 94, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.no-button {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.no-button:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 
+        0 12px 25px rgba(239, 68, 68, 0.5),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.no-button.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.yes-button span,
+.no-button span {
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 1.3;
+    padding: 10px;
+}
+
+.final-message {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+.final-message.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.celebration {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 251, 245, 0.95));
+    padding: 60px 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 50px rgba(212, 175, 55, 0.4);
+    border: 3px solid var(--gold);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.celebration::before {
+    content: '💍';
+    position: absolute;
+    font-size: 8rem;
+    top: -20px;
+    left: -20px;
+    opacity: 0.1;
+    transform: rotate(-15deg);
+}
+
+.celebration::after {
+    content: '💕';
+    position: absolute;
+    font-size: 8rem;
+    bottom: -20px;
+    right: -20px;
+    opacity: 0.1;
+    transform: rotate(15deg);
+}
+
+.celebration h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: celebrationBounce 1s ease-in-out;
+}
+
+@keyframes celebrationBounce {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-20px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-10px); }
+}
+
+.celebration p {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.celebration .love-note {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    background: linear-gradient(135deg, var(--gold), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    text-align: center;
+    padding: 60px 20px 40px;
+    color: var(--text-dark);
+    opacity: 0.8;
+}
+
+.footer p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.footer-date {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    letter-spacing: 2px;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+@media (min-width: 600px) {
+    .photo-container {
+        gap: 25px;
+    }
+    
+    .photo-side-grid {
+        gap: 20px;
+    }
+    
+    .photo-frame {
+        padding: 15px;
+    }
+    
+    .photo-featured .photo-frame {
+        max-width: 450px;
+    }
+}
+
+@media (min-width: 900px) {
+    .photo-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    
+    .photo-featured {
+        flex: 1.2;
+        max-width: 500px;
+    }
+    
+    .photo-side-grid {
+        flex: 1;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .photo-side .photo-frame {
+        aspect-ratio: 4/5;
+    }
+    
+    .gallery-section {
+        padding: 80px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reasons-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .message-box {
+        padding: 40px 25px;
+    }
+    
+    .animated-ring-container {
+        transform: scale(0.85);
+    }
+    
+    .love-message {
+        text-align: left;
+        font-size: 1rem;
+    }
+    
+    .hero-section {
+        min-height: 90vh;
+        padding: 40px 20px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .reason-card {
+        padding: 30px 25px;
+    }
+    
+    .love-button {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .buttons-container {
+        gap: 30px;
+        flex-wrap: nowrap;
+        padding: 20px 10px;
+    }
+    
+    .yes-button,
+    .no-button {
+        width: 140px;
+        height: 140px;
+        font-size: 1.3rem;
+    }
+    
+    .yes-button span,
+    .no-button span {
+        font-size: 1.3rem;
+    }
+    
+    .celebration {
+        padding: 40px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.2rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .animated-ring-container {
+        transform: scale(0.7);
+    }
+    
+    .love-button {
+        padding: 15px 35px;
+        font-size: 1rem;
+    }
+    
+    .message-box {
+        padding: 30px 20px;
+    }
+    
+    .love-message {
+        font-size: 0.95rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .photo-side-grid {
+        gap: 12px;
+    }
+    
+    .photo-frame {
+        padding: 10px;
+    }
+    
+    .photo-caption {
+        font-size: 0.85rem;
+        margin-top: 10px;
+    }
+    
+    .reason-card {
+        padding: 25px 20px;
+    }
+    
+    .reason-icon {
+        font-size: 2.5rem;
+    }
+    
+    .buttons-container {
+        gap: 20px;
+        padding: 20px 5px;
+    }
+    
+    .yes-button,
+    .no-button {
+        width: 120px;
+        height: 120px;
+        font-size: 1.2rem;
+    }
+    
+    .yes-button span,
+    .no-button span {
+        font-size: 1.1rem;
+        padding: 5px;
+    }
+    
+    .decision-title {
+        font-size: 1.8rem;
+    }
+    
+    .decision-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+    
+    .celebration h2 {
+        font-size: 1.8rem;
+    }
+    
+    .celebration p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .buttons-container {
+        gap: 15px;
+    }
+    
+    .yes-button,
+    .no-button {
+        width: 110px;
+        height: 110px;
+        font-size: 1.1rem;
+    }
+    
+    .yes-button span,
+    .no-button span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 30px 20px;
+    }
+    
+    .animated-ring-container {
+        transform: scale(0.6);
+    }
+    
+    .main-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+    
+    .date {
+        margin-top: 30px;
+    }
+}
